@@ -16,10 +16,10 @@ from  employees;
 select hire_date, hire_date * 1, hire_date / 1
 from  employees;
 
-select last_name, salary ±ﬁø©, commission_pct as "∫∏≥ Ω∫", salary * commission_pct * 12 as "√— ±ﬁø©"
+select last_name, salary Í∏âÏó¨, commission_pct as "Î≥¥ÎÑàÏä§", salary * commission_pct * 12 as "Ï¥ù Í∏âÏó¨"
 from employees;
   
-select salary "sal", commission_pct as BONUS, salary * commission_pct * 12 as "√— ±ﬁø©"
+select salary "sal", commission_pct as BONUS, salary * commission_pct * 12 as "Ï¥ù Í∏âÏó¨"
 from employees;
   
 select last_name, first_name, job_id, last_name || first_name || job_id as "Name"
@@ -31,7 +31,7 @@ from employees;
 select 100, 'AAA'
 from dual;
 
-select last_name, first_name, job_id, last_name || '¿« ¿Ã∏ß¿∫ ' || first_name || '¿Ã¥Ÿ.'
+select last_name, first_name, job_id, last_name || 'Ïùò Ïù¥Î¶ÑÏùÄ ' || first_name || 'Ïù¥Îã§.'
 from employees;
 
 select last_name, first_name, job_id, last_name || 's name is ' || first_name
