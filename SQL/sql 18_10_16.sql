@@ -1,14 +1,14 @@
--- escape ½Äº°ÀÚ ÁöÁ¤
+-- escape ì‹ë³„ì ì§€ì •
 select employee_id, last_name, job_id
 from employees
 where job_id like '%SA\_%' escape '\';
 
--- null °ª Ã£±â
+-- null ê°’ ì°¾ê¸°
 select last_name, first_name, job_id, commission_pct
 from employees
 where commission_pct is null;
 
--- ³í¸® ¿¬»êÀÚ
+-- ë…¼ë¦¬ ì—°ì‚°ì
 select employee_id, last_name, job_id, salary
 from employees
 where salary >= 10000
@@ -19,7 +19,7 @@ from employees
 where salary >= 10000
 or job_id like '%MAN%';
 
--- OR¿Í in
+-- ORì™€ in
 select last_name, job_id, salary
 from employees
 where (job_id = 'SA_REP' or job_id = 'AD_PRES')
@@ -30,8 +30,8 @@ from employees
 where job_id in ('SA_REP', 'AD_PRES')
 and salary > 15000;
 
--- Á¤·Ä order by, desc, nulls
-select last_name, first_name, salary "±Ş¿©"
+-- ì •ë ¬ order by, desc, nulls
+select last_name, first_name, salary "ê¸‰ì—¬"
 from   employees
 order by commission_pct nulls first;
 
@@ -63,67 +63,67 @@ select department_id, salary, last_name, first_name
 from employees
 order by department_id desc, salary desc;
 
-/* ¾ÈµÇ´Â ¿¹½Ã */
-select department_id, salary ±Ş¿©, ±Ş¿© + 100 last_name, first_name
+/* ì•ˆë˜ëŠ” ì˜ˆì‹œ */
+select department_id, salary ê¸‰ì—¬, ê¸‰ì—¬ + 100 last_name, first_name
 from employees
 order by department_id desc, salary desc;
 
-select department_id, salary ±Ş¿©, last_name, first_name
+select department_id, salary ê¸‰ì—¬, last_name, first_name
 from employees
-where ±Ş¿© > 5000
+where ê¸‰ì—¬ > 5000
 order by department_id desc, salary desc;
 /**/
 
-/* order by¹®Àº »õ·Î¿î ¿­ ¸Ó¸®±Û ¹× ¿­ ¹øÈ£ È°¿ë °¡´É */
-select department_id, salary ±Ş¿©, last_name, first_name
+/* order byë¬¸ì€ ìƒˆë¡œìš´ ì—´ ë¨¸ë¦¬ê¸€ ë° ì—´ ë²ˆí˜¸ í™œìš© ê°€ëŠ¥ */
+select department_id, salary ê¸‰ì—¬, last_name, first_name
 from employees
-order by department_id desc, ±Ş¿© desc;
+order by department_id desc, ê¸‰ì—¬ desc;
 
 select department_id, salary, last_name, first_name
 from employees
 order by 1 desc, 2 desc;
 /**/
 
--- ¿¬½À¹®Á¦ 2-1
+-- ì—°ìŠµë¬¸ì œ 2-1
 select last_name, first_name, hire_date, salary
 from employees
 where salary not between 5000 and 12000;
 
--- ¿¬½À¹®Á¦ 2-2
+-- ì—°ìŠµë¬¸ì œ 2-2
 select last_name, job_id, hire_date
 from employees
 where last_name in ('Matos', 'Taylor')
 order by hire_date;
 
--- ¿¬½À¹®Á¦ 2-3
+-- ì—°ìŠµë¬¸ì œ 2-3
 select last_name, salary, commission_pct
 from employees
 where commission_pct is not null
 order by salary desc, commission_pct desc;
 
--- ¿¬½À¹®Á¦ 2-4
+-- ì—°ìŠµë¬¸ì œ 2-4
 select last_name, first_name
 from employees
 where last_name like '__a%'
 or last_name like '__e%';
 
--- ¿¬½À¹®Á¦ 2-5
+-- ì—°ìŠµë¬¸ì œ 2-5
 select last_name, job_id, salary
 from employees
 where job_id in ('SA_MAN', 'ST_CLERK')
 and salary not in (2500, 3500, 7000);
 
--- chapter 3. ´ÜÀÏ Çà ÇÔ¼ö
--- -- ¹®ÀÚ ÇÔ¼ö
--- -- -- ´ë¼Ò¹®ÀÚ º¯È¯ ÇÔ¼ö : ÁÖ·Î where¿¡¼­ ¾²ÀÓ
+-- chapter 3. ë‹¨ì¼ í–‰ í•¨ìˆ˜
+-- -- ë¬¸ì í•¨ìˆ˜
+-- -- -- ëŒ€ì†Œë¬¸ì ë³€í™˜ í•¨ìˆ˜ : ì£¼ë¡œ whereì—ì„œ ì“°ì„
 select last_name, first_name, upper(last_name), lower(first_name), initcap('abc def')
 from   employees;
 
--- -- -- ¹®ÀÚ Á¶ÀÛ ÇÔ¼ö
+-- -- -- ë¬¸ì ì¡°ì‘ í•¨ìˆ˜
 -- 1. concat
 select last_name, first_name, concat(last_name, first_name) "Full name"
 from employees;
-/* concatÀº ÀÎÀÚ¸¦ 2°³±îÁö ¹Û¿¡ ¸ø¹ŞÀ½*/
+/* concatì€ ì¸ìë¥¼ 2ê°œê¹Œì§€ ë°–ì— ëª»ë°›ìŒ*/
 --select last_name, first_name, concat(last_name, ' ', first_name) "Full name"
 select last_name, first_name, concat(concat(last_name, ' '), first_name) "Full name"
 from employees;
@@ -135,7 +135,7 @@ select last_name, first_name, concat(last_name, first_name) "Full name",
        substr(concat(last_name, first_name), 1, 3) sub1, substr(concat(last_name, first_name), 5, 4) sub2, 
        substr(concat(last_name, first_name), -6, 2) sub3
 from employees;
-  /* ¿¬½À¹®Á¦ 2-4 substr ÀÌ¿ëÇÑ ¹æ¹ı */
+  /* ì—°ìŠµë¬¸ì œ 2-4 substr ì´ìš©í•œ ë°©ë²• */
   select last_name, first_name
   from   employees
   where  substr(last_name, 3, 1) in ('a', 'e')
@@ -146,7 +146,7 @@ select last_name, first_name, length(first_name) "Length", concat(last_name, fir
        substr(concat(last_name, first_name), -6, 2) sub3
 from employees;
 
--- 4. instr : ¹®ÀÚ¿­ index ÃßÃâ
+-- 4. instr : ë¬¸ìì—´ index ì¶”ì¶œ
 select last_name, first_name, concat(last_name, first_name) "Full name",
        instr(concat(last_name, first_name), 'e', 1, 1) instr1,
        instr(concat(last_name, first_name), 'e', 7, 1) instr2,
@@ -166,12 +166,12 @@ select last_name, first_name, concat(last_name, first_name) "Full name",
        replace(concat(last_name, first_name), 'ra', '@') rep
 from   employees
 
--- 7. trim : ¾Õ µÚ Æ¯Á¤ ¹®ÀÚ Á¦°Å
+-- 7. trim : ì• ë’¤ íŠ¹ì • ë¬¸ì ì œê±°
 select last_name, first_name, upper(concat(last_name, first_name)) "Full name",
        trim('D' from upper(concat(last_name, first_name))) trim
 from   employees;
 
--- -- ¼ıÀÚ ÇÔ¼ö
+-- -- ìˆ«ì í•¨ìˆ˜
 -- 1. round
 select round(456.789), round(456.789, 0), round(456.789, 1), round(456.789, 2),
        round(456.789, -1), round(456.789, -2) from dual;
@@ -184,43 +184,43 @@ select trunc(456.789), trunc(456.789, 0), trunc(456.789, 1), trunc(456.789, 2),
 select mod(20, 4), mod(20, 3), mod(20, 7), mod(20, -3), 20/7, 
        sign(50), sign(-10), sign(0) from dual;
 
--- -- ³¯Â¥ ÇÔ¼ö
-/* ³¯Â¥ ½Ã°£ Æ÷¸ä ¹Ù²Ù±â */
+-- -- ë‚ ì§œ í•¨ìˆ˜
+/* ë‚ ì§œ ì‹œê°„ í¬ë©§ ë°”ê¾¸ê¸° */
 alter session set nls_date_format = 'yyyy/mm/dd hh24:mi:ss';
 alter session set nls_date_format = 'DD-MON-RR';
-/* alter´Â ±âº»°ª µî º¯°æÇÒ ¶§ ¾¸ */ 
+/* alterëŠ” ê¸°ë³¸ê°’ ë“± ë³€ê²½í•  ë•Œ ì”€ */ 
 
--- -- -- ³¯Â¥ µ¥ÀÌÅÍ ¿¬»ê
+-- -- -- ë‚ ì§œ ë°ì´í„° ì—°ì‚°
 select sysdate, sysdate + 1/24, sysdate - 1/24 from dual;
 select sysdate, sysdate + 30/1440, sysdate - 30/1440 from dual;
 select sysdate + 1, sysdate, (sysdate + 1) - sysdate from dual;
--- select sysdate + 1, sysdate, (sysdate + 1) + sysdate from dual; << ³¯Â¥³¢¸®ÀÇ µ¡¼ÀÀº ¾ÈµÊ
+-- select sysdate + 1, sysdate, (sysdate + 1) + sysdate from dual; << ë‚ ì§œë¼ë¦¬ì˜ ë§ì…ˆì€ ì•ˆë¨
 
--- -- -- ³¯Â¥ Á¶ÀÛ ÇÔ¼ö
--- 1. months_between(ÃÖ±Ù ³¯Â¥, °ú°Å ³¯Â¥)
-select first_name, months_between(sysdate, hire_date) "±Ù¼Ó °³¿ù"
+-- -- -- ë‚ ì§œ ì¡°ì‘ í•¨ìˆ˜
+-- 1. months_between(ìµœê·¼ ë‚ ì§œ, ê³¼ê±° ë‚ ì§œ)
+select first_name, months_between(sysdate, hire_date) "ê·¼ì† ê°œì›”"
 from   employees;
--- 2. add_months, next_day(³¯Â¥, '¿äÀÏ'), last_day
+-- 2. add_months, next_day(ë‚ ì§œ, 'ìš”ì¼'), last_day
 select sysdate, add_months(sysdate, 2), next_day(sysdate, 'FRIDAY') ,
        last_day(sysdate) from dual;
---3. ³¯Â¥ round, trunc
+--3. ë‚ ì§œ round, trunc
 select sysdate, round(sysdate, 'dd'), round(sysdate, 'mm'),
        trunc(sysdate, 'dd'), trunc(sysdate, 'mm') from dual;
        
--- -- -- ³¯Â¥ ÇÔ¼ö
+-- -- -- ë‚ ì§œ í•¨ìˆ˜
 alter session set time_zone = '+9:00';
 select sysdate, current_date, systimestamp, current_timestamp from dual;
 
 alter session set time_zone = '-7:00';
 select sysdate, current_date, systimestamp, current_timestamp from dual;
 
--- ¿¬½À¹®Á¦ 3-1
+-- ì—°ìŠµë¬¸ì œ 3-1
 select employee_id, last_name, salary, round(salary * 1.155) "New Salary"
 from employees;
 select employee_id, last_name, salary, trunc(salary * 1.155) "New Salary"
 from employees;
 
--- ¿¬½À¹®Á¦ 3-2
+-- ì—°ìŠµë¬¸ì œ 3-2
 select initcap(first_name) "Name", length(first_name) "Length"
 from employees
 where substr(first_name, 1, 1) in ('J', 'A', 'M');
@@ -228,7 +228,7 @@ where substr(first_name, 1, 1) in ('J', 'A', 'M');
    or    instr(first_name, 'A', 1, 1) = 1
    or    instr(first_name, 'M', 1, 1) = 1 */
 
--- ¿¬½À¹®Á¦ 3-3
+-- ì—°ìŠµë¬¸ì œ 3-3
 select last_name, round(months_between(sysdate, hire_date)) "MONTHS_WORKED"
 from employees
 order by MONTHS_WORKED;
