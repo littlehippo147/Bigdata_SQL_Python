@@ -171,4 +171,4 @@ order by department_id, job_id;
 select count(salary), count(commission_pct), 
        avg(salary), avg(commission_pct), avg(nvl(commission_pct, 0))
 from employees;
--- null 값과 상관 없이 전체에 대한 평균을 구하려면 
+-- null 값과 상관 없이 전체에 대한 평균을 구하려면 nvl 사용
