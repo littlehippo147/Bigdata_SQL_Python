@@ -1,20 +1,20 @@
-select 100 + '200' from dual; /* ¿À·ù ¾øÀ½ -> 100 + to_number('200') »ê¼ú ¿¬»ê */
-select 100 + 'A' from dual; /* ¿À·ù -> to_number('A')¿¡¼­ type error */
+select 100 + '200' from dual; /* ì˜¤ë¥˜ ì—†ìŒ -> 100 + to_number('200') ì‚°ìˆ  ì—°ì‚° */
+select 100 + 'A' from dual; /* ì˜¤ë¥˜ -> to_number('A')ì—ì„œ type error */
 
--- ¿À¶óÅ¬¿¡¼­´Â º¸Åë ¹®ÀÚ¸¦ ¼ıÀÚ·Î º¯È¯½ÃÅ°·Á´Â °æÇâÀÌ Å­
+-- ì˜¤ë¼í´ì—ì„œëŠ” ë³´í†µ ë¬¸ìë¥¼ ìˆ«ìë¡œ ë³€í™˜ì‹œí‚¤ë ¤ëŠ” ê²½í–¥ì´ í¼
 select department_id, first_name, hire_date
 from employees
 where department_id = '30'; /* '30' -> 30 */
--- like´Â ¹®ÀÚ µ¥ÀÌÅÍ¿¡¸¸ ¾µ ¼ö ÀÖ´Â ¿¬»êÀÚÀÌ¹Ç·Î µ¥ÀÌÅÍ¸¦ ¹®ÀÚ·Î º¯È¯½ÃÄÑ¼­ ºñ±³
+-- likeëŠ” ë¬¸ì ë°ì´í„°ì—ë§Œ ì“¸ ìˆ˜ ìˆëŠ” ì—°ì‚°ìì´ë¯€ë¡œ ë°ì´í„°ë¥¼ ë¬¸ìë¡œ ë³€í™˜ì‹œì¼œì„œ ë¹„êµ
 select department_id, first_name, hire_date
 from employees
 where department_id like '3%'; /* department_id -> to_char(department_id) */
 
--- -- ºñ±³ ¿¬»êÀÚÀÇ ÁÂº¯¿¡´Â º¯ÇüµÇÁö ¾ÊÀº ¼ø¼öÇÑ columnÀ» ½áÁÖ´Â °ÍÀÌ °¡Àå Best!
--- ¾Ï½ÃÀû µ¥ÀÌÅÍ À¯Çü º¯È¯ : ¼­¹ö¿¡¼­ ÀÚµ¿À¸·Î º¯È¯
--- ¸í½ÃÀû µ¥ÀÌÅÍ À¯Çü º¯È¯ : º¯È¯ ÇÔ¼ö¸¦ »ç¿ëÇÏ¿© ¼öÇà
+-- -- ë¹„êµ ì—°ì‚°ìì˜ ì¢Œë³€ì—ëŠ” ë³€í˜•ë˜ì§€ ì•Šì€ ìˆœìˆ˜í•œ columnì„ ì¨ì£¼ëŠ” ê²ƒì´ ê°€ì¥ Best!
+-- ì•”ì‹œì  ë°ì´í„° ìœ í˜• ë³€í™˜ : ì„œë²„ì—ì„œ ìë™ìœ¼ë¡œ ë³€í™˜
+-- ëª…ì‹œì  ë°ì´í„° ìœ í˜• ë³€í™˜ : ë³€í™˜ í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì—¬ ìˆ˜í–‰
 
--- ³¯Â¥ µ¥ÀÌÅÍ¿¡ to_char ÇÔ¼ö »ç¿ë
+-- ë‚ ì§œ ë°ì´í„°ì— to_char í•¨ìˆ˜ ì‚¬ìš©
 select sysdate, to_char(sysdate) from dual;
 select sysdate, to_char(sysdate, 'YYYY/MM/DD'), to_char(sysdate, 'YEAR  MM  DD')
 from   dual;
@@ -26,14 +26,14 @@ select sysdate, to_char(sysdate, 'YEAR Year year'), to_char(sysdate, 'MONTH Mont
 from   dual;
 select sysdate, to_char(sysdate, 'D') from dual;
 
--- fm Æ÷¸Ë
+-- fm í¬ë§·
 select hire_date, to_char(hire_date, 'yyyy/mm/dd'), to_char(hire_date, 'Month Day yyyy'),
        to_char(hire_date, 'DD Month yyyy'), to_char(hire_date, 'fmDD Month yyyy')
 from   employees
 select to_char(sysdate, 'dd'), to_char(sysdate, 'ddsp'), to_char(sysdate, 'ddspth')
 from dual;
 
--- ¼ıÀÚ µ¥ÀÌÅÍ¿¡ to_char ÇÔ¼ö »ç¿ë
+-- ìˆ«ì ë°ì´í„°ì— to_char í•¨ìˆ˜ ì‚¬ìš©
 select salary, to_char(salary, '$9,999') sal1,
        to_char(salary, 'L999,999,999') sal2,
        to_char(salary, 'L000,000,000') sal3,
@@ -50,7 +50,7 @@ from employees;
 select 100 + to_number('5000', '9999') from dual;
 select 100 + to_number('5,000', '9,999') from dual;
 select 100 + '5000' from dual;
-/* select 100 + '5,000' from dual; ¿À·ù */
+/* select 100 + '5,000' from dual; ì˜¤ë¥˜ */
 
 select first_name, hire_date
 from employees
@@ -62,30 +62,30 @@ update employees set hire_date = sysdate
 where employee_id = 166;
 commit;
 
--- sysdate »ç¿ë½Ã ½Ã°£ ºÎºĞÀÌ ´Ù¸£¸é ´Ù¸¥ °ªÀ¸·Î ³ª¿È
+-- sysdate ì‚¬ìš©ì‹œ ì‹œê°„ ë¶€ë¶„ì´ ë‹¤ë¥´ë©´ ë‹¤ë¥¸ ê°’ìœ¼ë¡œ ë‚˜ì˜´
 select employee_id, to_char(hire_date, 'yyyy/mm/dd hh:mi:ss')
 from employees;
 
 select employee_id, first_name, hire_date
 from employees
--- where round(hire_date, 'DAY') = to_date(round(sysdate, 'DAY'), 'DD-MON-YY'); << ³» ¹æ¹ı
-/* ´Ù °¡´É
+-- where round(hire_date, 'DAY') = to_date(round(sysdate, 'DAY'), 'DD-MON-YY'); << ë‚´ ë°©ë²•
+/* ë‹¤ ê°€ëŠ¥
 where hire_date >= to_date('2018/10/17', 'yyyy/mm/dd')
 and hire_date < to_date('2018/10/18', 'yyyy/mm/dd');
 where hire_date between to_date('2018/10/17', 'yyyy/mm/dd') and to_date('2018/10/18', 'yyyy/mm/dd'); 
-¶Ç´Â 
+ë˜ëŠ” 
 select employee_id, first_name, hire_date
 from employees
-where to_char(hire_date, 'yyyy/mm/dd') = '2018/10/17'; << Áß¿äÇÑ ¹æ¹ı ***
+where to_char(hire_date, 'yyyy/mm/dd') = '2018/10/17'; << ì¤‘ìš”í•œ ë°©ë²• ***
 */
--- ¿¬µµ ´ÜÀ§·Î Ã£±â
+-- ì—°ë„ ë‹¨ìœ„ë¡œ ì°¾ê¸°
 select first_name, hire_date
 from employees
 where to_char(hire_date, 'yyyy') = '2008';
 
--- -- ±âÅ¸ ÇÔ¼ö NULL °ª°ú °ü·Ã
+-- -- ê¸°íƒ€ í•¨ìˆ˜ NULL ê°’ê³¼ ê´€ë ¨
 -- 1. NVL
-select salary, commission_pct, salary + commission_pct /* null °ªÀÌ ÇÏ³ª¶óµµ ÀÖÀ¸¸é °á°úµµ null */
+select salary, commission_pct, salary + commission_pct /* null ê°’ì´ í•˜ë‚˜ë¼ë„ ìˆìœ¼ë©´ ê²°ê³¼ë„ null */
 from employees;
 select salary, commission_pct, salary + commission_pct, nvl(salary, 0) + nvl(commission_pct, 0)
 from employees;
@@ -98,7 +98,7 @@ select coalesce(1, 2, 3), coalesce(null, 2, 3), coalesce(null, null, 3), coalesc
 -- 3. GREATEST, LEAST
 select greatest('HA', 'HE', 'HI'), least(10, 20, 30) from dual;
 
--- 4. Á¶°ÇºÎ Ç¥Çö½Ä DECODE ÇÔ¼ö, CASE ½Ä
+-- 4. ì¡°ê±´ë¶€ í‘œí˜„ì‹ DECODE í•¨ìˆ˜, CASE ì‹
 select first_name, job_id, salary,
        decode(job_id, 'SA_REP', 'SR',
                       'IT_PROG', 'IP',
@@ -114,35 +114,35 @@ select first_name, job_id, salary,
        case when salary <= 5000 then 'low'
             when salary > 5000 and salary <= 10000 then 'med'
             when salary > 10000 and salary <= 20000 then 'high'
-            -- when salary > 20000 then 'very high' ¾ø¾îµµ °°À½ 
+            -- when salary > 20000 then 'very high' ì—†ì–´ë„ ê°™ìŒ 
             else 'very high' end salary_nm
 from employees;
 
--- ¿¬½À¹®Á¦ 4-1
+-- ì—°ìŠµë¬¸ì œ 4-1
 select last_name || ' earns ' || to_char(salary, '$99,999') || ' monthly but wants ' 
        || to_char(3 * salary, '$99,999') "Dream Salaries"
 from   employees;
-/* °­»ç´Ô Ç®ÀÌ
+/* ê°•ì‚¬ë‹˜ í’€ì´
 select last_name || ' earns ' || to_char(salary, 'fm$999,999,999') || 
        ' monthly but wants ' || to_char(salary * 3, 'fmL999,999,999') "Dream Salaries"
 from employees;
 */
 
--- ¿¬½À¹®Á¦ 4-2
+-- ì—°ìŠµë¬¸ì œ 4-2
 select last_name, first_name, nvl(to_char(commission_pct, '.9'), 'No Commission') "COMM"
 from employees;
-/* °­»ç´Ô Ç®ÀÌ
+/* ê°•ì‚¬ë‹˜ í’€ì´
 select last_name, first_name, nvl(to_char(commission_pct), 'No Commission') "COMM"
        case when commission_pct is not null then to_char(commission_pct) else 'No Commission' end
 from employees;
 */
 
--- ¿¬½À¹®Á¦ 4-3
+-- ì—°ìŠµë¬¸ì œ 4-3
 select last_name, hire_date, to_char(hire_date, 'Day') DAY
 from employees
 -- order by case to_char(hire_date, 'D') when '1' then '8' else to_char(hire_date, 'D') end;
 order by decode(to_char(hire_date, 'D'), '1', '8', to_char(hire_date, 'D'));
-/* °­»ç´Ô Ç®ÀÌ
+/* ê°•ì‚¬ë‹˜ í’€ì´
 select last_name, hire_date, to_char(hire_date, 'Day')
 from employees
 order by to_char(hire_date-1, 'd');
@@ -152,7 +152,7 @@ order by to_char(hire_date-1, 'd');
 select salary, to_char(salary, 'L999,999'), to_char(salary, '$999,999')
 from employees;
 
--- -- ±×·ìÇÔ¼ö
+-- -- ê·¸ë£¹í•¨ìˆ˜
 select count(salary), sum(salary), avg(salary), min(salary), max(salary)
 from employees;
 
@@ -161,14 +161,14 @@ from employees;
 
 select count(*), count(commission_pct), count(distinct department_id) 
 from employees;
--- *´Â Á¶°Ç ÇÏ¿¡ ¸ğµç ÇàÀ» counting ÇØ¶ó
+-- *ëŠ” ì¡°ê±´ í•˜ì— ëª¨ë“  í–‰ì„ counting í•´ë¼
 
 select distinct department_id, job_id
 from employees
 order by department_id, job_id;
--- °áÇÕµÈ °ª¿¡ ´ëÇÑ Áßº¹ Á¦°Å
+-- ê²°í•©ëœ ê°’ì— ëŒ€í•œ ì¤‘ë³µ ì œê±°
 
 select count(salary), count(commission_pct), 
        avg(salary), avg(commission_pct), avg(nvl(commission_pct, 0))
 from employees;
--- null °ª°ú »ó°ü ¾øÀÌ ÀüÃ¼¿¡ ´ëÇÑ Æò±ÕÀ» ±¸ÇÏ·Á¸é nvl »ç¿ë
+-- null ê°’ê³¼ ìƒê´€ ì—†ì´ ì „ì²´ì— ëŒ€í•œ í‰ê· ì„ êµ¬í•˜ë ¤ë©´ nvl ì‚¬ìš©
