@@ -90,3 +90,9 @@ select job_id, count(*), count(decode(), , , null), ...
 from employees
 group by job_id;
 */
+
+-- outer join hr DB example
+select distinct department_id
+from employees;
+select * from departments;
+select * from locations;
