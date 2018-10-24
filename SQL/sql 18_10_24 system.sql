@@ -1,40 +1,40 @@
--- °ü¸®ÀÚ id
+-- ê´€ë¦¬ì id
 
 grant select on hr.employees to scott;
 
--- °ø¿ë ¸¸µé±â
+-- ê³µìš© ë§Œë“¤ê¸°
 
 create public synonym e for hr.employees;
 
--- µ¥ÀÌÅÍ ÆÄÀÏ ¸¸µé±â? ¾÷¹« º°·Î Å×ÀÌºí ½ºÆäÀÌºê ¸¸µë
+-- ë°ì´í„° íŒŒì¼ ë§Œë“¤ê¸°? ì—…ë¬´ ë³„ë¡œ í…Œì´ë¸” ìŠ¤í˜ì´ ë§Œë“¬
 create tablespace insa
 datafile 'c:\prod\insa01.dbf' size 50m;
 
 alter tablespace insa
 add datafile 'c:\prod1\insa02.dbf' size 10m;
 
--- tablespace µéÀÇ dictionary view 
+-- tablespace ë“¤ì˜ dictionary view 
 select * from dba_data_files;
 
 select table_name from dba_tables
 where tablespace_name = 'INSA';
 
 /*
-1. db »ı¼º
-2. ¾÷¹«º° tablespace »ı¼º
-3. ÀÏ¹İ db user »ı¼º(hr ÀÎ»ç, scott ±Ş¿© µîµî) + ±ÇÇÑºÎ¿©(privilege, role) - ¾ÈÇÏ¸é Á¢¼Ó X
-                                                                  ¦¦connect, resource
-4. ¾÷¹« table, index, view, ...
+1. db ìƒì„±
+2. ì—…ë¬´ë³„ tablespace ìƒì„±
+3. ì¼ë°˜ db user ìƒì„±(hr ì¸ì‚¬, scott ê¸‰ì—¬ ë“±ë“±) + ê¶Œí•œë¶€ì—¬(privilege, role) - ì•ˆí•˜ë©´ ì ‘ì† X
+                                                                  â””connect, resource
+4. ì—…ë¬´ table, index, view, ...
 */
 
--- user »ı¼º by µÚ¿¡ ÆĞ½º¿öµå
+-- user ìƒì„± by ë’¤ì— íŒ¨ìŠ¤ì›Œë“œ
 create user insa_adm identified by oracle;
--- user·Î ÇÏ¿©±İ insa tablespace »ç¿ëÇÏµµ·Ï ÇÔ.
+-- userë¡œ í•˜ì—¬ê¸ˆ insa tablespace ì‚¬ìš©í•˜ë„ë¡ í•¨.
 alter user insa_adm default tablespace insa;
 
--- ±ÇÇÑ ºÎ¿©ÇÏ±â GRANT
+-- ê¶Œí•œ ë¶€ì—¬í•˜ê¸° GRANT
 grant connect, resource to insa_adm;
 
--- ±ÇÇÑ ºÎ¿©ÈÄ insa user Á¢¼Ó
+-- ê¶Œí•œ ë¶€ì—¬í›„ insa user ì ‘ì†
 
 
