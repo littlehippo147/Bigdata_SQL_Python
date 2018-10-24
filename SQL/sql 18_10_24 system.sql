@@ -6,7 +6,7 @@ grant select on hr.employees to scott;
 
 create public synonym e for hr.employees;
 
--- 데이터 파일 만들기? 업무 별로 테이블 스페이 만듬
+-- 데이터 파일 만들기? 업무 별로 테이블 스페이스 만듬
 create tablespace insa
 datafile 'c:\prod\insa01.dbf' size 50m;
 
