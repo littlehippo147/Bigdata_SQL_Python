@@ -1,29 +1,29 @@
-/* 23ÀÏ ¿ä¾à
-CREATE TABLE ¹®
-char(°íÁ¤ ±æÀÌ 2000ÀÚ±îÁö) º¸´Ù´Â varchar2(°¡º¯ ±æÀÌ 4000ÀÚ±îÁö)¸¦ ¸¹ÀÌ ¾¸
-´õºÒ¾î number, date Å¸ÀÔ ¸¹ÀÌ ¾¸
-Á¦¾à Á¶°Ç
-primary key : ÇØ´ç column¿¡ µé¾î¿À´Â °ªÀÌ not nullÀÌ¸é¼­ unique ÇØ¾ßÇÔ (Å×ÀÌºí ´ç 1°³)
-unique : ÇØ´ç column¿¡ µé¾î¿À´Â °ªÀÌ unique ÇØ¾ßÇÔ (¿©·¯°³ÀÇ null »ó°ü X)
-not null : null¸¸ ¾Æ´Ï¸é µÈ´Ù
-check : Á¶°Ç °É¾îÁÖ±â (ex) salary > 0
-references : µ¥ÀÌÅÍ¸¦ Á¶°¢³»¼­ ºĞ¸® ÀúÀåÇÏ´Â °ÍÀ» Á¤±ÔÈ­¶ó°í ÇÔ
-foreign key : column  level ¿¡¼­´Â Á¦¾àÁ¶°ÇÀ» ¼±¾ğÇÒ ÇÊ¿ä°¡ ¾øÀ½. 
-              references¸¦ ÀÌ¿ëÇØ ¾î¶² tableÀÇ ¾î¶² columnÀ» ÂüÁ¶ÇÒ °ÍÀÎÁö ½áÁÖ¾î¾ßÇÔ.
+/* 23ì¼ ìš”ì•½
+CREATE TABLE ë¬¸
+char(ê³ ì • ê¸¸ì´ 2000ìê¹Œì§€) ë³´ë‹¤ëŠ” varchar2(ê°€ë³€ ê¸¸ì´ 4000ìê¹Œì§€)ë¥¼ ë§ì´ ì”€
+ë”ë¶ˆì–´ number, date íƒ€ì… ë§ì´ ì”€
+ì œì•½ ì¡°ê±´
+primary key : í•´ë‹¹ columnì— ë“¤ì–´ì˜¤ëŠ” ê°’ì´ not nullì´ë©´ì„œ unique í•´ì•¼í•¨ (í…Œì´ë¸” ë‹¹ 1ê°œ)
+unique : í•´ë‹¹ columnì— ë“¤ì–´ì˜¤ëŠ” ê°’ì´ unique í•´ì•¼í•¨ (ì—¬ëŸ¬ê°œì˜ null ìƒê´€ X)
+not null : nullë§Œ ì•„ë‹ˆë©´ ëœë‹¤
+check : ì¡°ê±´ ê±¸ì–´ì£¼ê¸° (ex) salary > 0
+references : ë°ì´í„°ë¥¼ ì¡°ê°ë‚´ì„œ ë¶„ë¦¬ ì €ì¥í•˜ëŠ” ê²ƒì„ ì •ê·œí™”ë¼ê³  í•¨
+foreign key : column  level ì—ì„œëŠ” ì œì•½ì¡°ê±´ì„ ì„ ì–¸í•  í•„ìš”ê°€ ì—†ìŒ. 
+              referencesë¥¼ ì´ìš©í•´ ì–´ë–¤ tableì˜ ì–´ë–¤ columnì„ ì°¸ì¡°í•  ê²ƒì¸ì§€ ì¨ì£¼ì–´ì•¼í•¨.
 
-ALTER TABLE ¹® : Àß ¾È¾¸ (¿ÀÈ÷·Á drop Çß´Ù°¡ Àç»ı¼ºÇÏ´Â °ÍÀ» ´õ ¸¹ÀÌ ¾¸)
-»õ ¿­ Ãß°¡
-±âÁ¸ ¿­ Á¤ÀÇ ¼öÁ¤
-»õ ¿­ÀÇ ±âº»°ª Á¤ÀÇ
-¿­ »èÁ¦ 
-¿­ ÀÌ¸§ ¹Ù²Ù±â
-ÀĞ±â Àü¿ë »óÅÂ·Î Å×ÀÌºí º¯°æ
+ALTER TABLE ë¬¸ : ì˜ ì•ˆì”€ (ì˜¤íˆë ¤ drop í–ˆë‹¤ê°€ ì¬ìƒì„±í•˜ëŠ” ê²ƒì„ ë” ë§ì´ ì”€)
+ìƒˆ ì—´ ì¶”ê°€
+ê¸°ì¡´ ì—´ ì •ì˜ ìˆ˜ì •
+ìƒˆ ì—´ì˜ ê¸°ë³¸ê°’ ì •ì˜
+ì—´ ì‚­ì œ 
+ì—´ ì´ë¦„ ë°”ê¾¸ê¸°
+ì½ê¸° ì „ìš© ìƒíƒœë¡œ í…Œì´ë¸” ë³€ê²½
 
-drop Å×ÀÌºí »èÁ¦(ÈŞÁöÅë)
-cascade constraint : Å×ÀÌºíÀÌ ´Ù¸¥ Å×ÀÌºí·ÎºÎÅÍ ÂüÁ¶µÇ´Â °æ¿ì Á¦¾àÁ¶°Ç ¸ÕÀú »èÁ¦
+drop í…Œì´ë¸” ì‚­ì œ(íœ´ì§€í†µ)
+cascade constraint : í…Œì´ë¸”ì´ ë‹¤ë¥¸ í…Œì´ë¸”ë¡œë¶€í„° ì°¸ì¡°ë˜ëŠ” ê²½ìš° ì œì•½ì¡°ê±´ ë¨¼ì € ì‚­ì œ
 
-PURGE Å×ÀÌºí »èÁ¦(¿ÏÀü »èÁ¦)
-PURGE RECYCLEBIN(ÈŞÁöÅë ºñ¿ì±â)
+PURGE í…Œì´ë¸” ì‚­ì œ(ì™„ì „ ì‚­ì œ)
+PURGE RECYCLEBIN(íœ´ì§€í†µ ë¹„ìš°ê¸°)
 
 
 update emp_sample e
@@ -39,9 +39,9 @@ select * from employees;
 select * from emp_sample;
 
 alter table emp_sample add (department_name varchar2(30));
--- ºÎ¼­ ¹øÈ£¿Í ÀÏÄ¡ÇÏ´Â ºÎ¼­ ¸íÄªÀ» ¾Ë¾Æ¼­ ¾÷µ¥ÀÌÆ®
+-- ë¶€ì„œ ë²ˆí˜¸ì™€ ì¼ì¹˜í•˜ëŠ” ë¶€ì„œ ëª…ì¹­ì„ ì•Œì•„ì„œ ì—…ë°ì´íŠ¸
 
--- ´ÙÀ½ °°Àº °úÁ¤Àº ºÒ¤Ñ¤ÑÆí
+-- ë‹¤ìŒ ê°™ì€ ê³¼ì •ì€ ë¶ˆã…¡ã…¡í¸
 select department_name
 from departments
 where department_id = 90;
@@ -50,12 +50,12 @@ update emp_sample
 set department_name = 'Executive'
 where department_id = 90;
 
--- µû¶ó¼­ »ó°ü subquery ÀÌ¿ë
+-- ë”°ë¼ì„œ ìƒê´€ subquery ì´ìš©
 update emp_sample e
 set department_name = (select department_name from departments d
                        where d.department_id = e.department_id);
 
--- »ó°ü subquery ¿¹½Ã
+-- ìƒê´€ subquery ì˜ˆì‹œ
 select employee_id, first_name, salary, e1.department_id, (select round(avg(salary)) from employees e3 
                                                            group by department_id 
                                                            having e1.department_id = e3.department_id) as "avg(sal) by dept"
@@ -63,7 +63,7 @@ from employees e1
 where salary > (select avg(salary) from employees e2
                 group by department_id
                 having e1.department_id = e2.department_id);
-/* °­»ç´Ô Ç®ÀÌ
+/* ê°•ì‚¬ë‹˜ í’€ì´
 select employee_id, first_name, salary, e1.department_id
 from employees e1
 where salary > (select avg(salary) 
@@ -71,9 +71,9 @@ where salary > (select avg(salary)
                 where e1.department_id = e2.department_id);
 */                
 
--- µ¥ÀÌÅÍ Object °´Ã¼
+-- ë°ì´í„° Object ê°ì²´
 -- -- VIEW object
--- »óÀ§ 5°³¸¸ º¸±â
+-- ìƒìœ„ 5ê°œë§Œ ë³´ê¸°
 select *
 from (select department_id, round(avg(salary)) avg_sal 
      from   employees
@@ -81,7 +81,7 @@ from (select department_id, round(avg(salary)) avg_sal
      order by avg_sal desc)
 where rownum <= 5;
 
--- view object¸¦ ¸¸µé¾î ¾µ ¶§¿¡´Â ¹İµå½Ã alias ¿­ ÀÌ¸§ ÀÌ¿ë(°ıÈ£ ¼¯ÀÎ columnÀ» ¿­ ÀÌ¸§À¸·Î ÀÎ½Ä ¸øÇÔ)
+-- view objectë¥¼ ë§Œë“¤ì–´ ì“¸ ë•Œì—ëŠ” ë°˜ë“œì‹œ alias ì—´ ì´ë¦„ ì´ìš©(ê´„í˜¸ ì„ì¸ columnì„ ì—´ ì´ë¦„ìœ¼ë¡œ ì¸ì‹ ëª»í•¨)
 create view emp_avg
 as
 select department_id, round(avg(salary)) avg_sal 
@@ -92,18 +92,18 @@ order by avg_sal desc;
 select * from emp_avg
 where rownum <= 5;
 
--- from Àı ¾È¿¡ ³Ö¾î¼­ ¾²´Â subqueryµéÀ» inline view ¶ó°í ÇÔ
--- ³ª È¥ÀÚ Àú select ¹®À» ¾µ ¶§¿¡´Â ±»ÀÌ °´Ã¼·Î ¸¸µé ÇÊ¿ä´Â ¾øÀ½
+-- from ì ˆ ì•ˆì— ë„£ì–´ì„œ ì“°ëŠ” subqueryë“¤ì„ inline view ë¼ê³  í•¨
+-- ë‚˜ í˜¼ì ì € select ë¬¸ì„ ì“¸ ë•Œì—ëŠ” êµ³ì´ ê°ì²´ë¡œ ë§Œë“¤ í•„ìš”ëŠ” ì—†ìŒ
 
-/* ´Ü¼ø ºä 
- ´ÜÀÏ table¿¡¼­ ¸¸µé¾îÁø ÇÔ¼ö³ª ¼ö½ÄÀ» Æ÷ÇÔÇÏÁö ¾ÊÀº ´Ü¼ø ÄÃ·¯’×·Î ±¸¼ºµÈ view
- µ¥ÀÌÅÍ ±×·ì Æ÷ÇÔ X
- DML ¹®Àå ¼öÇà °¡´É
+/* ë‹¨ìˆœ ë·° 
+ ë‹¨ì¼ tableì—ì„œ ë§Œë“¤ì–´ì§„ í•¨ìˆ˜ë‚˜ ìˆ˜ì‹ì„ í¬í•¨í•˜ì§€ ì•Šì€ ë‹¨ìˆœ ì»¬ëŸ¬Â’ç€ êµ¬ì„±ëœ view
+ ë°ì´í„° ê·¸ë£¹ í¬í•¨ X
+ DML ë¬¸ì¥ ìˆ˜í–‰ ê°€ëŠ¥
 
-º¹ÇÕ ºä
- ´ÙÁß table¿¡¼­ ¸¸µé¾îÁø ÇÔ¼ö³ª ¼ö½Ä µî Æ÷ÇÔ µÈ view
- µ¥ÀÌÅÍ ±×·ì Æ÷ÇÔ 
- DML ¹®Àå ¼öÇà X
+ë³µí•© ë·°
+ ë‹¤ì¤‘ tableì—ì„œ ë§Œë“¤ì–´ì§„ í•¨ìˆ˜ë‚˜ ìˆ˜ì‹ ë“± í¬í•¨ ëœ view
+ ë°ì´í„° ê·¸ë£¹ í¬í•¨ 
+ DML ë¬¸ì¥ ìˆ˜í–‰ X
 */
 
 create view dept_vu(id, name)
@@ -113,11 +113,11 @@ from departments;
 
 select * from dept_vu;
 
--- view ´Â dml ¹® ¾µ ¼ö ÀÖÁö¸¸ view ÀÚÃ¼¿¡ µÇ´Â °ÍÀº ¾Æ´Ô
+-- view ëŠ” dml ë¬¸ ì“¸ ìˆ˜ ìˆì§€ë§Œ view ìì²´ì— ë˜ëŠ” ê²ƒì€ ì•„ë‹˜
 
 insert into dept_v values(300, 'TEST');
 
--- CREATE ´ë½Å REPLACE·Î view ³»¿ë ´ëÃ¼ °¡´É
+-- CREATE ëŒ€ì‹  REPLACEë¡œ view ë‚´ìš© ëŒ€ì²´ ê°€ëŠ¥
 
 -- -- SEQUENCE object
 create table dept_new (
@@ -158,11 +158,11 @@ nocache;
 
 commit;
 
--- ¾Æ¹« ¿É¼Ç ¾ø´Â °æ¿ì start 1 by 1
+-- ì•„ë¬´ ì˜µì…˜ ì—†ëŠ” ê²½ìš° start 1 by 1
 select seq1.nextval from dual;
--- max °ª Á¦ÇÑ
+-- max ê°’ ì œí•œ
 select seq2.nextval from dual;
--- cycle : max °ª µµ´ŞÇÏ¸é 1·Î µ¹¾Æ°¨
+-- cycle : max ê°’ ë„ë‹¬í•˜ë©´ 1ë¡œ ëŒì•„ê°
 select seq3.nextval from dual;
 select seq4.nextval from dual;
 
@@ -177,23 +177,28 @@ start with 290
 increment by 10
 maxvalue 9999;
 
--- DICTIONARY table(system table) µÚ¿¡ $ ºÙ¾îÀÖÀ½
--- ¿ì¸®°¡ create·Î ¸¸µå´Â object¿¡ ´ëÇÑ Á¤º¸¸¦ oracle ³»ºÎÀûÀ¸·Î ÀúÀåÇÏ´Â table
--- tableÀº segment, view´Â segment ¾Æ´Ô(ÀúÀåÀÌ ÇÊ¿ä ¾ø±â ¶§¹®)
+-- DICTIONARY table(system table) ë’¤ì— $ ë¶™ì–´ìˆìŒ
+-- ìš°ë¦¬ê°€ createë¡œ ë§Œë“œëŠ” objectì— ëŒ€í•œ ì •ë³´ë¥¼ oracle ë‚´ë¶€ì ìœ¼ë¡œ ì €ì¥í•˜ëŠ” table
+-- tableì€ segment, viewëŠ” segment ì•„ë‹˜(ì €ì¥ì´ í•„ìš” ì—†ê¸° ë•Œë¬¸)
 
--- CURRVAL ¸¶Áö¸·À¸·Î ÇÒ´ç ¹ŞÀº °ª ´Ù½Ã ÇÒ´ç
--- sequence ´Â start with »©°í º¯°æ °¡´É.
+-- CURRVAL ë§ˆì§€ë§‰ìœ¼ë¡œ í• ë‹¹ ë°›ì€ ê°’ ë‹¤ì‹œ í• ë‹¹
+-- sequence ëŠ” start with ë¹¼ê³  ë³€ê²½ ê°€ëŠ¥.
 
--- -- µ¿ÀÇ¾î
+-- -- ë™ì˜ì–´
+-- ê°ì²´ì— ë‹¤ë¥¸ ì´ë¦„ ë¶€ì—¬
+-- ê³µìš© ë™ì˜ì–´ public
+-- ê°œë³„ ë™ì˜ì–´ private
+
+
 -- datafile
--- sys / change_on_install -> oracle_4U : ´Ù¿îµÈ µ¥ÀÌÅÍ¸¦ ½ºÅ¸Æ® ¾÷ ¼Ë´Ù¿î ÇÏ°Å³ª µ¥ÀÌÅÍ¸¦ ¹é¾÷ÇÏ´Â µîµî ÀÛ¾÷ (´ë»§ °ü¸®ÀÚ)
--- system / manager -> oracle_4U : À§ ÀÛ¾÷ ¿ÜÀÇ ÀÛ¾÷
+-- sys / change_on_install -> oracle_4U : ë‹¤ìš´ëœ ë°ì´í„°ë¥¼ ìŠ¤íƒ€íŠ¸ ì—… ì…§ë‹¤ìš´ í•˜ê±°ë‚˜ ë°ì´í„°ë¥¼ ë°±ì—…í•˜ëŠ” ë“±ë“± ì‘ì—… (ëŒ€ë¹µ ê´€ë¦¬ì)
+-- system / manager -> oracle_4U : ìœ„ ì‘ì—… ì™¸ì˜ ì‘ì—…
 
--- index´Â »öÀÎÀÇ ¼Óµµ¸¦ ³ôÀÌ±â À§ÇØ¼­ »ç¿ëÇÒ »Ó, select ¹®ÀÇ ¼Óµµ´Â ´õ ´À·ÁÁü
--- ¿À¶óÅ¬ÀÌ ÀÚÃ¼ÀûÀ¸·Î ¸¸µé¾îÁØ index´Â Àı´ë »èÁ¦ ¾ÈµÊ. drop ÇÒ ¶§¸¸ »èÁ¦µÊ.
--- ÀÚµ¿ : Å×ÀÌºí Á¤ÀÇ¿¡¼­ primary key ¶Ç´Â unique Á¦¾àÁ¶°Ç Á¤ÀÇ½Ã »ı¼º. Á¦¾à Á¶°ÇÀ» drop ÇÏ¸é ÀÚµ¿À¸·Î °°ÀÌ drop µÊ
--- ¼öµ¿ : ÇàÀÌ ¿¢¼¼½º ÇÏ´Â ¼Óµµ ³ôÀÌ±â À§ÇØ À¯Àú°¡ ¿­ÀÇ ºñ°íÀ¯ ÀÎµ¦½º »ı¼º
--- index·Î »öÀÎ °úÁ¤ Áß°£°ª root, »óÀ§ Áß°£ °ª ÇÏÀ§ Áß°£ °ª branch -> ¼ÒÁÖ ¶Ñ²± ±î±â ¼ıÀÚ ¸ÂÃß±â Ã³·³ ¾÷´Ù¿îÀ¸·Î ÀÎµ¦½º Ã£¾Æ°¨
+-- indexëŠ” ìƒ‰ì¸ì˜ ì†ë„ë¥¼ ë†’ì´ê¸° ìœ„í•´ì„œ ì‚¬ìš©í•  ë¿, select ë¬¸ì˜ ì†ë„ëŠ” ë” ëŠë ¤ì§
+-- ì˜¤ë¼í´ì´ ìì²´ì ìœ¼ë¡œ ë§Œë“¤ì–´ì¤€ indexëŠ” ì ˆëŒ€ ì‚­ì œ ì•ˆë¨. drop í•  ë•Œë§Œ ì‚­ì œë¨.
+-- ìë™ : í…Œì´ë¸” ì •ì˜ì—ì„œ primary key ë˜ëŠ” unique ì œì•½ì¡°ê±´ ì •ì˜ì‹œ ìƒì„±. ì œì•½ ì¡°ê±´ì„ drop í•˜ë©´ ìë™ìœ¼ë¡œ ê°™ì´ drop ë¨
+-- ìˆ˜ë™ : í–‰ì´ ì—‘ì„¸ìŠ¤ í•˜ëŠ” ì†ë„ ë†’ì´ê¸° ìœ„í•´ ìœ ì €ê°€ ì—´ì˜ ë¹„ê³ ìœ  ì¸ë±ìŠ¤ ìƒì„±
+-- indexë¡œ ìƒ‰ì¸ ê³¼ì • ì¤‘ê°„ê°’ root, ìƒìœ„ ì¤‘ê°„ ê°’ í•˜ìœ„ ì¤‘ê°„ ê°’ branch -> ì†Œì£¼ ëšœê»‘ ê¹Œê¸° ìˆ«ì ë§ì¶”ê¸° ì²˜ëŸ¼ ì—…ë‹¤ìš´ìœ¼ë¡œ ì¸ë±ìŠ¤ ì°¾ì•„ê°
 
 select * from emp_new;
 
@@ -215,10 +220,10 @@ create index name_ix on emp_new(ename);
 select * from emp_new
 where ename = 'Lex';
 
--- °ª¿¡ ÇÔ¼ö³ª ¼ö½ÄÀ¸·Î º¯ÇüÀ» ÁÖ¸é index¸¦ ÀÌ¿ëÇÒ ¼ö ¾øÀ½; µû¶ó¼­ ¼ø¼öÇÑ column ±×´ë·Î »ç¿ëÇÏ´Â °ÍÀÌ ÃÖÀû
+-- ê°’ì— í•¨ìˆ˜ë‚˜ ìˆ˜ì‹ìœ¼ë¡œ ë³€í˜•ì„ ì£¼ë©´ indexë¥¼ ì´ìš©í•  ìˆ˜ ì—†ìŒ; ë”°ë¼ì„œ ìˆœìˆ˜í•œ column ê·¸ëŒ€ë¡œ ì‚¬ìš©í•˜ëŠ” ê²ƒì´ ìµœì 
 select * from emp_new
 where upper(ename) = upper('lex');
 
--- ±×·³ ¾î¶»°Ô ÇÏ´À³Ä? ¾Æ¿¹ ÇÔ¼ö³ª ¼ö½ÄÀ» Àû¿ëÇÑ °ªÀ¸·Î index¸¦ ¸¸µç´Ù.
+-- ê·¸ëŸ¼ ì–´ë–»ê²Œ í•˜ëŠëƒ? ì•„ì˜ˆ í•¨ìˆ˜ë‚˜ ìˆ˜ì‹ì„ ì ìš©í•œ ê°’ìœ¼ë¡œ indexë¥¼ ë§Œë“ ë‹¤.
 create index f_name_ix on emp_new(upper(ename));
 
