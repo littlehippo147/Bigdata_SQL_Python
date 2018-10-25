@@ -20,7 +20,8 @@ select table_name from dba_tables
 where tablespace_name = 'INSA';
 
 /*
-1. db 생성
+1. db 생성 (처음 생성하면 oracle 프로그램이 돌아가게 하는 table space가 생성됨)
+    └ SYSTEM table, SYSAUX table, UNDO table, TEMP table
 2. 업무별 tablespace 생성
 3. 일반 db user 생성(hr 인사, scott 급여 등등) + 권한부여(privilege, role) - 안하면 접속 X
                                                                   └connect, resource
