@@ -32,6 +32,10 @@ from employees
 where substr(last_name, length(last_name), 1) = 'n';
 
 -- 강사님 풀이
+select count(*)
+from employees
+where last_name like '%n';
+where substr(last_name, -1, 1) = 'n';
 
 
 -- 연습문제 3
@@ -40,7 +44,9 @@ from employees
 where to_char(hire_date, 'dd') < 16;
 
 -- 강사님 풀이
-
+select first_name, hire_date
+from employees
+where to_char(hire_date, 'dd') < '16';
 
 
 -- 연습문제 4
@@ -48,4 +54,5 @@ select first_name, salary, round(salary/1000) "급여단위"
 from employees;
 
 -- 강사님 풀이
-
+select first_name, salary, round(salary/1000)
+from employees;
