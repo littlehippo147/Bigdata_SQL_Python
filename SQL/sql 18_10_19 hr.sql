@@ -2,71 +2,74 @@ select * from departments;
 select * from locations;
 select * from employees;
 
--- ¿¬½À¹®Á¦ 6-1
+-- ì—°ìŠµë¬¸ì œ 6-1
 select e.last_name, e.job_id, e.department_id, d.department_name
 from   employees e join departments d
 on     e.department_id = d.department_id
-join   locations l /* joinÀÇ ¼ø¼­°¡ ¹Ù²ğ ¼ö ÀÖ´Ù */
+join   locations l /* joinì˜ ìˆœì„œê°€ ë°”ë€” ìˆ˜ ìˆë‹¤ */
 on     d.location_id = l.location_id
 and    l.city = 'Toronto';
-/* °­»ç´Ô Ç®ÀÌ1
+
+-- ê°•ì‚¬ë‹˜ í’€ì´1
 select last_name, job_id, d.department_id, department_name
 from   employees e, departments d
 where  e.department_id = d.department_id
-and    d.location_id = 1800; << locationÀÌ °è¼Ó ¹Ù²î´Â °æ¿ì °ï¶õ
- Ç®ÀÌ 2
+and    d.location_id = 1800; << locationì´ ê³„ì† ë°”ë€ŒëŠ” ê²½ìš° ê³¤ë€
+-- í’€ì´ 2
 select last_name, job_id, d.department_id, department_name
 from   employees e, departments d, locations l
 where  e.department_id = d.department_id
 and    d.location_id = l.location_id
 and    l.city = 'Toronto';
- Ãß°¡ Ç®ÀÌ : joinÀ» °°Àº ÁÙ¿¡ ½áÁàµµ on ÀıÀ» °°Àº ¼ö ¸¸Å­ ½áÁÖ¸é µÊ
+-- ì¶”ê°€ í’€ì´ : joinì„ ê°™ì€ ì¤„ì— ì¨ì¤˜ë„ on ì ˆì„ ê°™ì€ ìˆ˜ ë§Œí¼ ì¨ì£¼ë©´ ë¨
 select e.last_name, e.job_id, e.department_id, d.department_name
 from   employees e join departments d join locations l
 on     d.location_id = l.location_id
 and    l.city = 'Toronto'
 on     e.department_id = d.department_id;
-*/
 
--- ¿¬½À¹®Á¦ 6-2
+
+-- ì—°ìŠµë¬¸ì œ 6-2
 select e1.employee_id, e1.last_name, e1.manager_id, e2.last_name mng_ln
 from   employees e1 join employees e2
 on     e1.manager_id = e2.employee_id;
-/* °­»ç´Ô Ç®ÀÌ
+
+-- ê°•ì‚¬ë‹˜ í’€ì´
 select e.employee_id, e.last_name, e.manager_id, m.last_name
 from   employees e, employees m
 where  e.manager_id = m.employee_id;
-*/
 
--- ¿¬½À¹®Á¦ 6-3
+
+-- ì—°ìŠµë¬¸ì œ 6-3
 select e1.employee_id, e1.last_name, e1.manager_id, e2.last_name mng_ln
 from   employees e1 left outer join employees e2
 on     e1.manager_id = e2.employee_id;
-/* °­»ç´Ô Ç®ÀÌ
+
+-- ê°•ì‚¬ë‹˜ í’€ì´
 select e.employee_id, e.last_name, e.manager_id, m.last_name
 from   employees e, employees m
 where  e.manager_id = m.employee_id(+);
-*/
+
 
 -- -- -- Chapter 7 subquery
--- SELECT Àı
+-- SELECT ì ˆ
 select first_name, salary, (select round(avg(salary)) from employees) avg_sal
 from employees;
 
 select rowid, rownum, department_id, department_name
 from departments
-where rownum = 3; /* ÀÌ°æ¿ì µ¥ÀÌÅÍ return ¾ÈµÊ 1¸¸ µÊ */
-/* rowid(ÇàÀÇ À§Ä¡ ÁÖ¼Ò°ª), rownumÀº Çã¼öÀÇ ¿­, but ¼º´É Ãø¸é¿¡¼­ rownum Á¾Á¾ ¾²ÀÓ. */
+where rownum = 3; /* ì´ê²½ìš° ë°ì´í„° return ì•ˆë¨ 1ë§Œ ë¨ */
+/* rowid(í–‰ì˜ ìœ„ì¹˜ ì£¼ì†Œê°’), rownumì€ í—ˆìˆ˜ì˜ ì—´, but ì„±ëŠ¥ ì¸¡ë©´ì—ì„œ rownum ì¢…ì¢… ì“°ì„. */
 
--- FROM Àı
--- -- »óÀ§ 3°³¸¸ Ç¥½ÃÇÏ¶ó?
+-- FROM ì ˆ
+-- -- ìƒìœ„ 3ê°œë§Œ í‘œì‹œí•˜ë¼?
 select department_id, round(avg(salary)) dp_sal
 from employees
 -- where rownum <= 3
 group by department_id
 -- having rownum <=3
 order by dp_sal desc;
-/* À§ ¿¹½Ã´Â ´Ù ¾ÈµÊ ¾Æ·¡ °°ÀÌ »ç¿ë */
+/* ìœ„ ì˜ˆì‹œëŠ” ë‹¤ ì•ˆë¨ ì•„ë˜ ê°™ì´ ì‚¬ìš© */
 
 select *
 from (select department_id, round(avg(salary)) dp_sal
@@ -75,7 +78,7 @@ from (select department_id, round(avg(salary)) dp_sal
       order by dp_sal desc)
 where rownum <= 3;
 
--- where Àı
+-- where ì ˆ
 select employee_id, first_name, salary
 from employees
 where salary > (select round(avg(salary)) from employees);
@@ -106,12 +109,12 @@ select employee_id, salary, last_name
 from employees m
 where exists (select employee_id from employees w
               where w.manager_id = m.employee_id);
--- inÀ» ½á¼­ EXISTS¿Í °°Àº ±¸¹® ¸¸µé±â
+-- inì„ ì¨ì„œ EXISTSì™€ ê°™ì€ êµ¬ë¬¸ ë§Œë“¤ê¸°
 select employee_id, salary, last_name
 from employees
 where employee_id in (select distinct manager_id from employees);
 
--- ¹İ´ë
+-- ë°˜ëŒ€
 select employee_id, salary, last_name
 from employees
 where employee_id not in (select distinct manager_id from employees
@@ -121,31 +124,32 @@ from employees m
 where not exists (select employee_id from employees w
                   where w.manager_id = m.employee_id);
 
--- ¿¬½À¹®Á¦ 7-1
+-- ì—°ìŠµë¬¸ì œ 7-1
 select first_name, salary, hire_date
 from   employees
 where  manager_id = (select employee_id from employees where first_name = 'Adam');
-/* °­»ç´Ô Ç®ÀÌ : AdamÀÌ ÇÑ¸íÀÌ ¾Æ´Ò ¼ö ÀÖ±â ¶§¹®¿¡ inÀ» ½áÁÖ¾î¾ßÇÑ´Ù.
+
+-- ê°•ì‚¬ë‹˜ í’€ì´ : Adamì´ í•œëª…ì´ ì•„ë‹ ìˆ˜ ìˆê¸° ë•Œë¬¸ì— inì„ ì¨ì£¼ì–´ì•¼í•œë‹¤.
 select first_name, salary, hire_date
 from employees
 where manager_id in (select employee_id from employees where first_name = 'Adam');
-*/
 
--- ¿¬½À¹®Á¦ 7-2
+
+-- ì—°ìŠµë¬¸ì œ 7-2
 select employee_id, last_name, first_name, salary
 from   employees
 where  salary > (select avg(salary) from employees)
 and    department_id in (select department_id from employees 
                          where last_name like '%u%');
-/* °­»ç´Ô Ç®ÀÌ
+-- ê°•ì‚¬ë‹˜ í’€ì´
 select employee_id, last_name, first_name, salary
 from   employees
 where  salary > (select avg(salary) from employees)
 and    department_id in (select department_id from employees 
                          where last_name like '%u%');
-*/
 
--- ¿¬½À¹®Á¦ 7-3
+
+-- ì—°ìŠµë¬¸ì œ 7-3
 -- not in
 select department_id, department_name
 from departments
@@ -156,7 +160,7 @@ select d.department_id, department_name
 from departments d
 where not exists (select e.department_id from employees e 
               where e.department_id = d.department_id);
-/* °­»ç´Ô Ç®ÀÌ
+-- ê°•ì‚¬ë‹˜ í’€ì´
 select department_id, department_name
 from departments
 where department_id not in (select distinct department_id 
@@ -167,6 +171,6 @@ from departments d
 where not exists (select 1 
                   from employees e 
                   where e.department_id = d.department_id);
-*/
+
 
 
