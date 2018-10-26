@@ -1,45 +1,45 @@
--- -- ±×·ì ÇÔ¼ö
+-- -- ê·¸ë£¹ í•¨ìˆ˜
 select count(0), count(1), count(100), count('a'), count(null) from dual;
 
--- ¼Ò±×·ì Grouping : GROUP BY
+-- ì†Œê·¸ë£¹ Grouping : GROUP BY
 select department_id, count(*), avg(salary)
 from employees;
-/* columnÀÇ ¼Ó¼ºÀÌ ¸ÂÁö ¾Ê¾Æ¼­ »ı±â´Â error -> »õ·Î¿î Àı ÇÊ¿ä GROUP BY */
+/* columnì˜ ì†ì„±ì´ ë§ì§€ ì•Šì•„ì„œ ìƒê¸°ëŠ” error -> ìƒˆë¡œìš´ ì ˆ í•„ìš” GROUP BY */
 select department_id, count(*), round(avg(salary), 2)
 from employees
 group by department_id
 order by department_id;
-/* ¿ø·¡´Â order by°¡ ÇÊ¼ö´Â ¾Æ´Ô but ÇöÀå ½Ç¹«¿¡¼­´Â Á¤·ÄÇØ¼­ µ¥ÀÌÅÍ »ı¼º */
+/* ì›ë˜ëŠ” order byê°€ í•„ìˆ˜ëŠ” ì•„ë‹˜ but í˜„ì¥ ì‹¤ë¬´ì—ì„œëŠ” ì •ë ¬í•´ì„œ ë°ì´í„° ìƒì„± */
 
 select department_id from employees group by department_id;
-select distinct department_id from employees; /* µÑ ´Ù °°´Ù */
+select distinct department_id from employees; /* ë‘˜ ë‹¤ ê°™ë‹¤ */
 
 select department_id, job_id, count(*), round(avg(salary), 2)
 from employees
 -- where avg(salary) >= 10000
 group by department_id, job_id
 order by department_id, job_id;
-/* where Àı¿¡´Â ±×·ì ÇÔ¼ö ¾µ ¼ö ¾øÀ½. ±×·ìÈ­ Àü¿¡ where Á¶°ÇÀıÀ» ½ÇÇàÇÏ±â ¶§¹®
-because ÇØ¼® ¼ø¼­°¡ from -> (where -> group by) -> having -> order by -> select 
-±×·ì °á°úÀÇ Á¶°Ç Á¦ÇÑÀº having ÀıÀ» ÀÌ¿ëÇÔ */
+/* where ì ˆì—ëŠ” ê·¸ë£¹ í•¨ìˆ˜ ì“¸ ìˆ˜ ì—†ìŒ. ê·¸ë£¹í™” ì „ì— where ì¡°ê±´ì ˆì„ ì‹¤í–‰í•˜ê¸° ë•Œë¬¸
+because í•´ì„ ìˆœì„œê°€ from -> (where -> group by) -> having -> order by -> select 
+ê·¸ë£¹ ê²°ê³¼ì˜ ì¡°ê±´ ì œí•œì€ having ì ˆì„ ì´ìš©í•¨ */
 
--- HAVING : ±×·ì °á°ú Á¦ÇÑ
+-- HAVING : ê·¸ë£¹ ê²°ê³¼ ì œí•œ
 select department_id, job_id, count(*), round(avg(salary), 2)
 from employees
-/* where department_id in (80, 90) 80, 90ÀÎ µ¥ÀÌÅÍ¸¸ ¸ÕÀú »Ì¾Æ³»°í ±×·ìÈ­ */
+/* where department_id in (80, 90) 80, 90ì¸ ë°ì´í„°ë§Œ ë¨¼ì € ë½‘ì•„ë‚´ê³  ê·¸ë£¹í™” */
 group by department_id, job_id
 having avg(salary) >= 10000
-/* having department_id in (80, 90) ¸ğµç µ¥ÀÌÅÍ¸¦ ±×·ìÈ­ÇÏ°í 80, 90ÀÎ µ¥ÀÌÅÍ¸¸ »Ì¾Æ³¿ */
+/* having department_id in (80, 90) ëª¨ë“  ë°ì´í„°ë¥¼ ê·¸ë£¹í™”í•˜ê³  80, 90ì¸ ë°ì´í„°ë§Œ ë½‘ì•„ëƒ„ */
 order by department_id, job_id;
--- having Àı¿¡¼­µµ ´ÜÀÏ column Á¶°Ç ¾µ ¼ö ÀÖÁö¸¸ ¼º´É ¸é¿¡¼­ ºñÈ¿À²
+-- having ì ˆì—ì„œë„ ë‹¨ì¼ column ì¡°ê±´ ì“¸ ìˆ˜ ìˆì§€ë§Œ ì„±ëŠ¥ ë©´ì—ì„œ ë¹„íš¨ìœ¨
 
--- ¿¬½À¹®Á¦ 5-1
+-- ì—°ìŠµë¬¸ì œ 5-1
 select department_id, min(salary) MIN_SALARY, max(salary) MAX_SALARY, sum(salary) 
        SUM_SALARY, round(avg(salary), 0) AVG_SALARY, count(department_id) DEPT_CNT
 from employees
 group by department_id
 order by department_id;
-/* °­»ç´Ô Ç®ÀÌ
+/* ê°•ì‚¬ë‹˜ í’€ì´
 select department_id, round(min(salary)), round(max(salary)), round(sum(salary)), 
        round(avg(salary)), count(*)
 from employees
@@ -47,49 +47,51 @@ group by department_id
 order by department_id;
 */
 
--- ¿¬½À¹®Á¦ 5-2
+-- ì—°ìŠµë¬¸ì œ 5-2
 select manager_id, min(salary)
 from employees
 where manager_id is not null
 group by manager_id
 having min(salary) > 6000
 order by min(salary) desc;
-/* °­»ç´Ô Ç®ÀÌ
-select manager_id, min(salary)
-from employees
-where manager_id is not null
-group by manager_id
-having min(salary) > 6000
-order by min(salary) desc;
-*/
 
--- ¿¬½À¹®Á¦ 5-3
--- count ÀÌ¿ë
+-- ê°•ì‚¬ë‹˜ í’€ì´
+select manager_id, min(salary)
+from employees
+where manager_id is not null
+group by manager_id
+having min(salary) > 6000
+order by min(salary) desc;
+
+
+-- ì—°ìŠµë¬¸ì œ 5-3
+-- count ì´ìš©
 select count(*) "total", 
        count(decode(to_char(hire_date, 'yyyy'), 2002, hire_date, null)) "2002",
        count(decode(to_char(hire_date, 'yyyy'), 2003, hire_date, null)) "2003",
        count(decode(to_char(hire_date, 'yyyy'), 2004, hire_date, null)) "2004",
        count(decode(to_char(hire_date, 'yyyy'), 2005, hire_date, null)) "2005"
 from employees;
--- sum ÀÌ¿ë
+-- sum ì´ìš©
 select count(*) "total", 
        sum(decode(to_char(hire_date, 'yyyy'), 2002, 1, 0)) "2002",
        sum(decode(to_char(hire_date, 'yyyy'), 2003, 1, 0)) "2003",
        sum(decode(to_char(hire_date, 'yyyy'), 2004, 1, 0)) "2004",
        sum(decode(to_char(hire_date, 'yyyy'), 2005, 1, 0)) "2005"
 from employees;
-/* °­»ç´Ô Ç®ÀÌ
+
+-- ê°•ì‚¬ë‹˜ í’€ì´
 select count(*),
  count(decode(to_char(hire_date, 'yyyy'), '2002', 'a', null)),
- ¹İº¹ 2003, 2004, 2005
- ¶Ç´Â
+ ë°˜ë³µ 2003, 2004, 2005
+ ë˜ëŠ”
  sum(decode(to_char(hire_date, 'yyyy'), '2002', 1, 0)),
 from employees
-job_id º°·Î
+job_id ë³„ë¡œ
 select job_id, count(*), count(decode(), , , null), ...
 from employees
 group by job_id;
-*/
+
 
 -- outer join hr DB example
 select distinct department_id
