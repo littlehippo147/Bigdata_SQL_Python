@@ -122,31 +122,33 @@ from employees;
 select last_name || ' earns ' || to_char(salary, '$99,999') || ' monthly but wants ' 
        || to_char(3 * salary, '$99,999') "Dream Salaries"
 from   employees;
-/* 강사님 풀이
+
+-- 강사님 풀이
 select last_name || ' earns ' || to_char(salary, 'fm$999,999,999') || 
        ' monthly but wants ' || to_char(salary * 3, 'fmL999,999,999') "Dream Salaries"
 from employees;
-*/
+
 
 -- 연습문제 4-2
 select last_name, first_name, nvl(to_char(commission_pct, '.9'), 'No Commission') "COMM"
 from employees;
-/* 강사님 풀이
+-- 강사님 풀이
 select last_name, first_name, nvl(to_char(commission_pct), 'No Commission') "COMM"
        case when commission_pct is not null then to_char(commission_pct) else 'No Commission' end
 from employees;
-*/
+
 
 -- 연습문제 4-3
 select last_name, hire_date, to_char(hire_date, 'Day') DAY
 from employees
 -- order by case to_char(hire_date, 'D') when '1' then '8' else to_char(hire_date, 'D') end;
 order by decode(to_char(hire_date, 'D'), '1', '8', to_char(hire_date, 'D'));
-/* 강사님 풀이
+
+-- 강사님 풀이
 select last_name, hire_date, to_char(hire_date, 'Day')
 from employees
 order by to_char(hire_date-1, 'd');
-*/
+
 
 --
 select salary, to_char(salary, 'L999,999'), to_char(salary, '$999,999')
