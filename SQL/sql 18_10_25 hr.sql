@@ -10,44 +10,42 @@ set department_name =(select department_name
                       from   departments as of timestamp sysdate - 10/1440 d2
                       where  d1.department_id = d2.department_id);
                       
--- ¿¬½À¹®Á¦ 1
+-- ì—°ìŠµë¬¸ì œ 1
 select * from employees
 where hire_date >= to_date('2003/01/01', 'yyyy/mm/dd')
 and   job_id = 'ST_CLERK';
 
--- -- °­»ç´Ô Ç®ÀÌ
+-- -- ê°•ì‚¬ë‹˜ í’€ì´
 select *
 from employees
 where hire_date >= to_date('2003/01/01', 'yyyy/mm/dd')
 and job_id = 'ST_CLERK';
 
 
--- ¿¬½À¹®Á¦ 2
-select count(*) "»ç¿ø ¼ö"
+-- ì—°ìŠµë¬¸ì œ 2
+select count(*) "ì‚¬ì› ìˆ˜"
 from employees
 where last_name like ('%n');
 
-select count(*) "»ç¿ø ¼ö"
+select count(*) "ì‚¬ì› ìˆ˜"
 from employees
 where substr(last_name, length(last_name), 1) = 'n';
 
-/* °­»ç´Ô Ç®ÀÌ
+-- ê°•ì‚¬ë‹˜ í’€ì´
 
-*/
 
--- ¿¬½À¹®Á¦ 3
+-- ì—°ìŠµë¬¸ì œ 3
 select first_name, hire_date
 from employees
 where to_char(hire_date, 'dd') < 16;
 
-/* °­»ç´Ô Ç®ÀÌ
+-- ê°•ì‚¬ë‹˜ í’€ì´
 
-*/
 
--- ¿¬½À¹®Á¦ 4
-select first_name, salary, round(salary/1000) "±Ş¿©´ÜÀ§"
+
+-- ì—°ìŠµë¬¸ì œ 4
+select first_name, salary, round(salary/1000) "ê¸‰ì—¬ë‹¨ìœ„"
 from employees;
 
-/* °­»ç´Ô Ç®ÀÌ
+-- ê°•ì‚¬ë‹˜ í’€ì´
 
-*/
