@@ -543,7 +543,7 @@ def osmodules():
             random_number = rd.randint(1,num)
             
             cnt = 0
-            print("1 ~ 100 중에 고르세요!")
+            print("1 ~", num, " 중에 고르세요!")
 
             while True:
                 pick = int(input("Pick > "))
