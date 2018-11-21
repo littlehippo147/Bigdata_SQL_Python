@@ -95,10 +95,18 @@ data = pd.read_csv(output_file, header = None)    # 예측할 데이터
 
 data[1] = sess.run(hypothesis, feed_dict = {X:data[0]})
 
-data.to_csv(output_file, header = False, index = False)
+data.columns = ['speed', 'dist']
 
-## cars_predict 파일 저장할 table 생성
-create_table2 = """create table if not exists cars_pred
+data.to_csv(output_file, header = True, index = False)
+
+## cars_predict 파일 저장할 cars_predDB와 table 생성
+c.execute("create database cars_predDB;")
+c.execute("use cars_predDB;")
+c.execute("grant all privileges on cars_predDB.* to 'KPC001'@'localhost';")
+c.execute("grant all privileges on carsDB.* to 'KPC002'@'10.1.42.45';")
+c.execute("flush privileges;")
+
+create_table2 = """create table if not exists cars_pred01
 (speed float,
  dist float);"""
 
@@ -106,10 +114,11 @@ c.execute(create_table2)
 
 ## cars_predict 저장
 file_reader = csv.reader(open(output_file, 'r'), delimiter=',')
+header = next(file_reader)
 for row in file_reader:
 	data = []
 	for column_index in range(len(header)):
 		data.append(row[column_index])
-	c.execute("INSERT INTO cars_pred VALUES (%s, %s);", data)
+	c.execute("INSERT INTO cars_pred01 VALUES (%s, %s);", data)
 
 con.commit()
