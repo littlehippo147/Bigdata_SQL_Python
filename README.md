@@ -17,4 +17,5 @@
 18/12/01 (sat) 13:00 SQLD (SQL Developer) 
 
 18/12/03 (mon) 라즈베리파이 지급
-![Uploading KakaoTalk_20181203_165334991.jpg…]()
+
+https://github.com/littlehippo147/Bigdata_SQL_Python/issues/1#issue-386700656
