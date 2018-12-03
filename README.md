@@ -18,4 +18,4 @@
 
 18/12/03 (mon) 라즈베리파이 지급
 
-https://github.com/littlehippo147/Bigdata_SQL_Python/issues/1#issue-386700656
+
