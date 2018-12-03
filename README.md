@@ -17,5 +17,10 @@
 18/12/01 (sat) 13:00 SQLD (SQL Developer) 
 
 18/12/03 (mon) 라즈베리파이 지급
+![kakaotalk_20181203_165334991](https://user-images.githubusercontent.com/37128105/49360769-7db61f80-f71d-11e8-8de8-d2299778ebd2.jpg)
+![kakaotalk_20181203_165336916](https://user-images.githubusercontent.com/37128105/49360756-7262f400-f71d-11e8-84cb-cf21890ae909.jpg)
+![kakaotalk_20181203_165339264](https://user-images.githubusercontent.com/37128105/49360760-742cb780-f71d-11e8-866b-cafe07d04f8d.jpg)
+![kakaotalk_20181203_165341570](https://user-images.githubusercontent.com/37128105/49360765-798a0200-f71d-11e8-9f48-d6506dceadc9.jpg)
+![kakaotalk_20181203_170058868](https://user-images.githubusercontent.com/37128105/49360945-fe751b80-f71d-11e8-9624-b278e92365e8.jpg)
 
 
