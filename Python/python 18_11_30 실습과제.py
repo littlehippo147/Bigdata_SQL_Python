@@ -84,24 +84,32 @@ W1 = tf.Variable(tf.random_normal([14, 100], stddev = 0.1), name='weight1')
 b1 = tf.Variable(tf.zeros([100]), name='bias1')
 layer1 = tf.nn.relu(tf.matmul(X, W1) + b1)
 
-W2 = tf.Variable(tf.random_normal([100, 30], stddev = 0.1), name='weight2')
-b2 = tf.Variable(tf.zeros([30]), name='bias2')
+W2 = tf.Variable(tf.random_normal([100, 60], stddev = 0.1), name='weight2')
+b2 = tf.Variable(tf.zeros([60]), name='bias2')
 layer2 = tf.nn.relu(tf.matmul(layer1, W2) + b2)
 
-W8 = tf.Variable(tf.random_normal([30, 30], stddev = 0.1), name='weight8')
+W3 = tf.Variable(tf.random_normal([60, 60], stddev = 0.1), name='weight3')
+b3 = tf.Variable(tf.zeros([60]), name='bias3')
+layer3 = tf.nn.relu(tf.matmul(layer2, W3) + b3)
+
+W4 = tf.Variable(tf.random_normal([60, 60], stddev = 0.1), name='weight4')
+b4 = tf.Variable(tf.zeros([60]), name='bias4')
+layer4 = tf.nn.relu(tf.matmul(layer3, W4) + b4)
+
+W8 = tf.Variable(tf.random_normal([60, 30], stddev = 0.1), name='weight8')
 b8 = tf.Variable(tf.zeros([30]), name='bias8')
-model = tf.matmul(layer2, W8) + b8
+model = tf.matmul(layer4, W8) + b8
 hypothesis = tf.sigmoid(model)
 
 
-cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = Y, logits = model))
-optimizer = tf.train.AdamOptimizer(learning_rate = 0.000001)
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels = Y, logits = model))
+optimizer = tf.train.AdamOptimizer(learning_rate = 0.00001)
 train = optimizer.minimize(cost)
 
 sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
-y_tr = sess.run(y_tr)
+#y_tr = sess.run(y_tr)
 
 
 
