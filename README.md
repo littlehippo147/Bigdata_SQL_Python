@@ -26,3 +26,8 @@ inner box
 ![kakaotalk_20181203_170058868](https://user-images.githubusercontent.com/37128105/49360945-fe751b80-f71d-11e8-9624-b278e92365e8.jpg)
 Power cable, Computer Network cable Usb Ethernet, just Usb cable
 
+18/12/05 (wen) Raspberrypi LED 센서 제어
+![kakaotalk_20181205_151000918](https://user-images.githubusercontent.com/37128105/49493555-ed541800-f89f-11e8-87d6-f762f80fa4e9.jpg)
+컴퓨터에 연결
+![kakaotalk_20181205_151001900](https://user-images.githubusercontent.com/37128105/49493560-efb67200-f89f-11e8-8656-9638ccc6c0f2.jpg)
+LED 센서 
