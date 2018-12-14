@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+  <title>{{ title }}</title>
+  <meta charset="UTF-8">
+  <script>
+    function changed( led ) {
+      window.location.href="/" + led
+    }
+  </script>
+</head>
+<body>
+  <center>
+  <h1>LED On/Off Control Web</h1>
+  <hr>
+  <h2>The current date and time on the server is : {{ time }}</h2>
+  <h2>{{ led_status }}</h2>
+  <hr>
+  <h2>LED Controls</h2>
+  <p/>
+  <input type="button" onClick="changed( 0 )" value="LED 0 ( Pin 14 )"/>
+  <input type="button" onClick="changed( 1 )" value="LED 1 ( Pin 15 )"/>
+  <hr>
+</body>
+</html>
