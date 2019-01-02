@@ -33,3 +33,5 @@ Power cable, Computer Network cable Usb Ethernet, just Usb cable
 LED 센서1 확인
 
 18/12/06 (thu) 빅 매칭 캠프 면접 참가로 결석
+
+18/12/31 (mon) 가족 사정으로 
